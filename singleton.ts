@@ -1,13 +1,19 @@
 import { perfil } from "./perfil"
 
 class SistemaSeguranca {
-    private static instance: SistemaSeguranca | null = null
+    private static validation: SistemaSeguranca | null = null
     private constructor (){}
 
     static getInstance(): SistemaSeguranca {
-        if (SistemaSeguranca.instance === null) {
-            SistemaSeguranca.instance = new SistemaSeguranca
+        if (SistemaSeguranca.validation === null) {
+            SistemaSeguranca.validation = new SistemaSeguranca()
+            perfil.lvlacess = true
+        } else {
+            console.log('Seu acesso já está permitido');
+            console.log(`Acesso permitido?${perfil.lvlacess}`);
         }
-        return SistemaSeguranca.instance
+        return SistemaSeguranca.validation
     }
 }
+
+export {SistemaSeguranca}
