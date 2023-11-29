@@ -1,4 +1,5 @@
 import { validationAcess } from "./login";
+import { SistemaSeguranca } from "./singleton";
 
 let ValidationEmail: string
 let ValidationPassword: string
@@ -23,5 +24,12 @@ validationAcess()
 ValidationEmail='aleatorio@gmail.com';
 ValidationPassword= 'teste1'
 validationAcess()
+
+//Demonstrando que apenas uma instância pode ser criada
+const teste1 = SistemaSeguranca.getInstance()
+const teste2 = SistemaSeguranca.getInstance()
+console.log('\n');
+console.log(teste1===teste2);
+
 
 export {ValidationEmail,ValidationPassword}
